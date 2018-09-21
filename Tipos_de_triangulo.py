@@ -1,44 +1,27 @@
 # determinar o tipo de triangulo que os tres lados formam
 from math import pow
-a,b,c = input().split(" ")
 
-a = float(a)
-b = float(b)
-c = float(c)
+x = list(map(float, input().split(" ")))
 
-if (a>b and a> c):
-    if (b < c):
-        aux = b
-        b = c
-        c = aux
-elif (b>a  and b>c):
-    aux = a
-    a = b
-    b = aux
-    if (b < c):
-        aux = b
-        b = c
-        c = aux
-elif (c > a and c > b):
-    aux = a
-    a = c
-    c = aux
-    if (b < c):
-        aux = b
-        b = c
-        c = aux
+x.sort()
+x.reverse()
 
-if (a >= (b+c)):
+if (x[0] >= (x[1]+x[2])):
     print('NAO FORMA TRIANGULO')
-else:
-    if (pow(a,2) == (pow(b,2)+pow(c,2))):
-        print('TRIANGULO RETANGULO')
-    elif (pow(a,2) > (pow(b,2)+pow(c,2))):
-        print('TRIANGULO OBTUSANGULO')
-    elif (pow(a,2) < (pow(b,2)+pow(c,2))):
-        print('TRIANGULO ACUTANGULO')
-    
-    if (a == b == c):
+elif (pow(x[0],2) == (pow(x[1],2)+pow(x[2],2))):
+    print('TRIANGULO RETANGULO')
+elif (pow(x[0],2) > (pow(x[1],2)+pow(x[2],2))):
+    print('TRIANGULO OBTUSANGULO')
+
+    if ((x[0] == x[1] and x[0] != x[2]) or (x[1] == x[2] and x[1] != x[0]) or (x[2] == x[0] and x[2] != x[1])):
+        print('TRIANGULO ISOSCELES')
+    elif (x[0] == x[1] == x[2]):
         print('TRIANGULO EQUILATERO')
-    else:
-        print('TRIANGULO ISOCELES')
+
+elif (pow(x[0], 2) < (pow(x[1], 2) + pow(x[2], 2))):
+    print('TRIANGULO ACUTANGULO')
+
+    if ((x[0] == x[1] and x[0] != x[2]) or (x[1] == x[2] and x[1] != x[0]) or (x[2] == x[0] and x[2] != x[1])):
+        print('TRIANGULO ISOSCELES')
+    elif (x[0] == x[1] == x[2]):
+        print('TRIANGULO EQUILATERO')
