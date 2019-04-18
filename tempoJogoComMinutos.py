@@ -9,7 +9,7 @@ horas = 0
 minutos = 0
 if h1 == h2:
     if min1 == min2:
-        print("O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)")
+        horas = 24
     else:
         if min1 > min2:
             horas = 23
